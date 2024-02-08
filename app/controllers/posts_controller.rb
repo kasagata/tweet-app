@@ -1,50 +1,48 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
-    # GET /post
+
+    # GET /posts
     def index
         @posts = Post.all
     end
 
-    # GET /post/new
+    # GET /posts/new
     def new
         @post = Post.new
     end
 
-    # GET /post/1
-    def show
-    end
-
-    # GET /post/1/edit
+    # GET /posts/1/edit
     def edit
     end
 
-    # POST /post
+    # POST /posts
     def create
         @post = Post.new(post_params)
 
         if @post.save
-        redirect_to @post, notice: 'Post was successfully created.'
+            redirect_to posts_path, notice: '新規作成しました。'
         else
-        render :new
+            render :new
         end
     end
 
-    # PATCH/PUT /post/1
+    # PATCH/PUT /posts/1
     def update
         if @post.update(post_params)
-            redirect_to @post, notice: 'post was successfully updated.'
+            redirect_to posts_path, notice: '投稿を更新しました。'
         else
             render :edit
         end
     end
 
+    # DELETE /posts/1
     def destroy
         @post.destroy
         respond_to do |format|
-        format.html { redirect_to @post, notice: "Blog was successfully destroyed." }
+        format.html { redirect_to posts_path, notice: "投稿を削除しました。" }
         end
     end
+
     private
     def set_post
         @post = Post.find(params[:id])
