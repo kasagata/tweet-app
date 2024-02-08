@@ -11,6 +11,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+    <div class="logo">
+      <%= image_tag 'Free.jpg' %>
+    </div>
+    </header>
+    <div>
+      <%= yield %>
+    </div>
+    <footer class="footer">
+      <p>Free Tweet~ツイートアプリケーションの課題~</p>
+    </footer>
   </body>
 </html>
